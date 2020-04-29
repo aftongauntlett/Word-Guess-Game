@@ -3,13 +3,13 @@
 // use {} because of module export
 const { Letter } = require("./Letter");
 
-// Defining the class Word 
+// Contains a class, `Word`, that depends on the `Letter` class. This is used to create an object representing the current word the user is attempting to guess.
 class Word {
 
-    // create an array letter objects
+    // word is passed in as a string
     constructor(word) {
 
-        // word is passed in as a string
+        // An array of Letter objects representing the letters of the underlying word
         this.letters = word
 
             // used split to turn word into an array
@@ -19,6 +19,7 @@ class Word {
             .map(letter => new Letter(letter))
     }
 
+    // A function that returns a string representing the word.This should call the function on each letter object(the first function defined in `Letter.js`) that displays the character or an underscore and concatenate those together.
     // function to call on the class word.
     renderWord() {
 
@@ -28,6 +29,8 @@ class Word {
         // use join to turn an array into a string
         console.log(word.join(" "))
     }
+
+    //   * A function that takes a character as an argument and calls the guess function on each letter object(the second function defined in `Letter.js`)
     // for each runs through all of the letters until complete
     guess(guessedLetter) {
         this.letters.forEach(letter => letter.guessLetter(guessedLetter))
@@ -38,10 +41,5 @@ module.exports = {
     Word
 }
 
-// Contains a class, `Word`, that depends on the`Letter` class.This is used to create an object representing the current word the user is attempting to guess.That means the class should define:
 
-//   * An array of`new` `Letter` objects representing the letters of the underlying word
 
-//     * A function that returns a string representing the word.This should call the function on each letter object(the first function defined in `Letter.js`) that displays the character or an underscore and concatenate those together.
-
-//   * A function that takes a character as an argument and calls the guess function on each letter object(the second function defined in `Letter.js`)
