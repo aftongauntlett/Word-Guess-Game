@@ -5,20 +5,21 @@ class Letter {
     // this. must be used, it accesses a variable for THIS instance
     this.stringValue = letterValue
     this.guess = false
+
     // the constructor should close here, it does not define functions.
   }
 
+  // if letter value is true to guessed letter, set guess to true (defaulted to false in constructor)
   guessLetter(guessedLetter) {
     if (this.stringValue === guessedLetter) {
       this.guess = true;
     }
   }
 
-  // replaced if else statement with ternary 
+  // replaced if else statement with ternary - if false return: "_"
   renderLetter() {
     return this.guess ? this.stringValue : "_"
   }
-
 }
 
 module.exports = {
